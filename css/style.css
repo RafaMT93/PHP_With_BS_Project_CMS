@@ -1,0 +1,49 @@
+:root {
+  --white: #fff;
+  --gray: #aaa;
+  --blackText: #333;
+  --dark: #212529;
+  --black: #000;
+  --defaultColor: #26a69a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/*Custom Navbar*/
+
+.navbar-defaultColor {
+  background-color: var(--defaultColor);
+}
+
+/*Header*/
+
+#header {
+  padding-top: 50px;
+  background-color: var(--dark);
+  color: var(--white);
+}
+header h2,
+header p {
+  margin-top: 1.25rem;
+}
+header p {
+  position: relative;
+  top: 0.563rem;
+}
+
+@media screen and (max-width: 1000px) {
+  #header {
+    text-align: center;
+  }
+  header p {
+    top: 0px;
+  }
+}
