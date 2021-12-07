@@ -69,6 +69,17 @@
       </div>
     </header>
 
+    <section class="bread">
+      <div class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" class="bg-light" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+          </ol>
+        </nav>
+
+      </div>
+    </section>
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

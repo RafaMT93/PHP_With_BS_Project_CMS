@@ -39,6 +39,15 @@ header p {
   top: 0.563rem;
 }
 
+/*Breadcrumb Section*/
+section.bread nav {
+  border-radius: 0.625rem;
+}
+section.bread nav ol {
+  padding: 0.625rem;
+  margin-top: 1.25rem;
+}
+
 @media screen and (max-width: 1000px) {
   #header {
     text-align: center;
