@@ -19,15 +19,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul id="principal-menu" class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" role="nav-link">Register</a>
+              <a class="nav-link active" aria-current="page" href="#" role="nav-link" ref_sys="about_team">Edit About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about" role="nav-link">Edit About</a>
+              <a class="nav-link" href="#" role="nav-link" ref_sys="team_regist">Team Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact" role="nav-link">Manage</a>
+              <a class="nav-link" href="#" role="nav-link" ref_sys="team_list">Team List</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
@@ -75,12 +75,16 @@
         <div class="row">
           <div class="col-md-3">
 
-            <ul class="list-group">
+            <ul id="second-menu" class="list-group">
               <li class="list-group-item active" aria-current="true">
-                <i class="bi bi-house-fill"></i> Home
+                <a href="#" ref_sys="about_team"><i class="bi bi-pencil-fill"></i> About</a>
               </li>
-              <li class="list-group-item"><i class="bi bi-pencil-fill"></i> About</li>
-              <li class="list-group-item"><i class="bi bi-pencil-fill"></i> Contact</li>
+              <li class="list-group-item">
+                <a href="#" ref_sys="team_regist"><i class="bi bi-pencil-fill"></i> Register Team</a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" ref_sys="team_list"><i class="bi bi-list-columns"></i> Team List</a>
+              </li>
             </ul>
 
           </div>
@@ -129,20 +133,39 @@
                     <tr>
                       <th>ID: </th>
                       <th>Member Name:</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>01</td>
                       <td>Doe</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm">
+                          <i class="bi bi-trash"></i>
+                          Excluir
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>02</td>
                       <td>Moe</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm">
+                          <i class="bi bi-trash"></i>
+                          Excluir
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>03</td>
                       <td>Dooley</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm">
+                          <i class="bi bi-trash"></i>
+                          Excluir
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -157,6 +180,17 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#principal-menu a, .list-group-item a').click(function(){
+          $('#principal-menu a, .list-group-item').removeClass('active');
+          $('.list-group-item a[ref_sys='+$(this).attr('ref_sys')+']').parent().addClass('active');
+          $('#principal-menu a[ref_sys='+$(this).attr('ref_sys')+']').addClass('active');
+
+          return false;
+        })
+      });
+    </script>
 
   </body>
 
