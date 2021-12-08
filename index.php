@@ -90,7 +90,7 @@
           </div>
           <div class="col-md-9">
 
-            <section class="card">
+            <section id="about_team_section" class="card">
               <div class="card-header bg-defaultColor">About</div>
               <div class="card-body">
 
@@ -106,7 +106,7 @@
               </div>
             </section>
 
-            <section class="card">
+            <section id="team_regist_section" class="card">
               <div class="card-header bg-defaultColor">Register Team</div>
               <div class="card-body">
 
@@ -124,7 +124,7 @@
               </div>
             </section>
 
-            <section class="card">
+            <section id="team_list_section" class="card">
               <div class="card-header bg-defaultColor">Team</div>
               <div class="card-body">
 
@@ -186,9 +186,17 @@
           $('#principal-menu a, .list-group-item').removeClass('active');
           $('.list-group-item a[ref_sys='+$(this).attr('ref_sys')+']').parent().addClass('active');
           $('#principal-menu a[ref_sys='+$(this).attr('ref_sys')+']').addClass('active');
-
           return false;
-        })
+        });
+        $('#principal-menu a, .list-group-item a').click(function(){
+          let ref = "#"+$(this).attr('ref_sys')+"_section";
+          let offset = $(ref).offset().top;
+          $('html, body').animate({scrollTop: offset - 50});
+          if($(window)[0].innerWidth <= 768 && $('.navbar-collapse').hasClass('show')) {
+            $('.navbar-toggler').click();
+          }
+
+        });
       });
     </script>
 
