@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css');
 :root {
   --white: #fff;
   --gray: #aaa;
@@ -6,23 +7,42 @@
   --black: #000;
   --defaultColor: #26a69a;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.bg-defaultColor {
+  background-color: var(--defaultColor);
+  color: var(--white);
+  font-weight: bold;
 }
 
-/*Custom Navbar*/
+/*Custom Bootstrap styles*/
 
 .navbar-defaultColor {
   background-color: var(--defaultColor);
 }
-
+.list-group-item.active {
+  background-color: var(--defaultColor);
+  border-color: var(--defaultColor);
+}
+section.card {
+  margin-bottom: 1.25rem;
+}
+.btn-defaultColor {
+  background-color: var(--defaultColor);
+  color: var(--white);
+  transition: 0.5s;
+}
+.btn-defaultColor:hover {
+  border-radius: 0;
+  background: #1d9186;
+}
 /*Header*/
 
 #header {
@@ -46,6 +66,14 @@ section.bread nav {
 section.bread nav ol {
   padding: 0.625rem;
   margin-top: 1.25rem;
+}
+
+textarea {
+  height: 8.75rem;
+  resize: vertical;
+}
+label {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 1000px) {

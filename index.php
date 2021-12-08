@@ -33,12 +33,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="about" role="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 1 18 16">
-                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-              </svg>
-
-              Exit
+                <i class="bi bi-box-arrow-right"></i>
+                Exit
               </a>
             </li>
           </ul>
@@ -51,18 +47,13 @@
         <div class="row">
           <div class="col-md-9">
             <h2>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="#fff" class="bi bi-gear-fill" viewBox="0 1 16 18">
-                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
-              </svg>  
+              <i class="bi bi-gear-fill"></i>
               Control Panel
             </h2>
           </div>
           <div class="col-md-3">
             <p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 1 18 16">
-              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-            </svg>  
+            <i class="bi bi-clock"></i>
             Last login: 07/12/2021</p>
           </div>
         </div>
@@ -76,11 +67,93 @@
             <li class="breadcrumb-item active" aria-current="page">Home</li>
           </ol>
         </nav>
-
       </div>
     </section>
 
+    <section class="principal">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
 
+            <ul class="list-group">
+              <li class="list-group-item active" aria-current="true">
+                <i class="bi bi-house-fill"></i> Home
+              </li>
+              <li class="list-group-item"><i class="bi bi-pencil-fill"></i> About</li>
+              <li class="list-group-item"><i class="bi bi-pencil-fill"></i> Contact</li>
+            </ul>
+
+          </div>
+          <div class="col-md-9">
+
+            <section class="card">
+              <div class="card-header bg-defaultColor">About</div>
+              <div class="card-body">
+
+              <form>
+                <div class="mb-3">
+                  <label for="aboutTeam" class="form-label">HTML Code</label>
+                  <textarea class="form-control" placeholder="Insert the content in HTML format" name="aboutTeam" id="aboutTeam"></textarea>
+                </div>
+                <button type="button" class="btn btn-md btn-defaultColor" type="submit">Submit</button>
+              </form>
+
+
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-header bg-defaultColor">Register Team</div>
+              <div class="card-body">
+
+                <form>
+                  <div class="mb-3">
+                    <label for="memberName" class="form-label">Member Name</label>
+                    <input type="text" class="form-control"name="memberName" id="memberName" />
+
+                    <label for="memberDesciption" class="form-label">Member Description</label>
+                    <textarea class="form-control" name="memberDesciption" id="memberDesciption"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-md btn-defaultColor" type="submit">Submit</button>
+                </form>
+
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-header bg-defaultColor">Team</div>
+              <div class="card-body">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID: </th>
+                      <th>Member Name:</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01</td>
+                      <td>Doe</td>
+                    </tr>
+                    <tr>
+                      <td>02</td>
+                      <td>Moe</td>
+                    </tr>
+                    <tr>
+                      <td>03</td>
+                      <td>Dooley</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
