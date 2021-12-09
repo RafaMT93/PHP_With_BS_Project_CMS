@@ -1,3 +1,9 @@
+<?php 
+  $pdo = new PDO('mysql:host=localhost;dbname=bs_php_project', 'root', '');
+  $about = $pdo->prepare('SELECT * FROM `db_about`');
+  $about->execute();
+  $about = $about->fetch()['ABOUT_TXT'];
+?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -94,12 +100,13 @@
               <div class="card-header bg-defaultColor">About</div>
               <div class="card-body">
 
-              <form>
+              <form method="post">
                 <div class="mb-3">
                   <label for="aboutTeam" class="form-label">HTML Code</label>
-                  <textarea class="form-control" placeholder="Insert the content in HTML format" name="aboutTeam" id="aboutTeam"></textarea>
+                  <textarea class="form-control" placeholder="Insert the content in HTML format" name="aboutTeam" id="aboutTeam"><?php printf($about) ?></textarea>
                 </div>
-                <button type="button" class="btn btn-md btn-defaultColor" type="submit">Submit</button>
+                <input type="hidden" name="Edit_About" value="">
+                <button type="button" class="btn btn-md btn-defaultColor" type="submit" name="activity">Submit</button>
               </form>
 
 
