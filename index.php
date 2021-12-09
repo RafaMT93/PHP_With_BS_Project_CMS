@@ -100,8 +100,14 @@
           <div class="col-md-9">
             <?php 
               if(isset($_POST['edit_about'])):
+                $about = $_POST['aboutTeam'];
+                $pdo->exec('DELETE FROM `db_about`');
+                $sql = $pdo->prepare('INSERT INTO `db_about` VALUES (null, ?)');
+                $sql->execute(array($about));
                 printf('<div class="alert alert-success">The HTML code edited <b>successfully</b>!</div>');
-              else:
+                $about = $pdo->prepare('SELECT * FROM `db_about`');
+                $about->execute();
+                $about = $about->fetch()['ABOUT_TXT'];
               endif;
             ?>
             <section id="about_team_section" class="card">
