@@ -135,13 +135,21 @@
 
                 <form>
                   <div class="mb-3">
+
                     <label for="memberName" class="form-label">Member Name</label>
                     <input type="text" class="form-control"name="memberName" id="memberName" />
 
+                    <div class="memberImg">
+                      <label for="memberImage" class="form-label">Member Image</label>
+                      <input type=file" name="memberImage" id="memberImage" class="form-control"/>
+                      <input type="submit" value="Upload Image" name="submit" class="btn btn-defaultColor btn-sm">
+                    </div>
+                    
                     <label for="memberDesciption" class="form-label">Member Description</label>
                     <textarea class="form-control" name="memberDesciption" id="memberDesciption"></textarea>
+
                   </div>
-                  <button type="button" class="btn btn-md btn-defaultColor" type="submit">Submit</button>
+                  <button class="btn btn-defaultColor btn-md" type="submit">Submit</button>
                 </form>
 
               </div>

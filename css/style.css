@@ -83,6 +83,15 @@ textarea {
 label {
   font-weight: bold;
 }
+.memberImg{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+#memberImage {
+  width:40%;
+  display: inline;
+}
+
 
 @media screen and (max-width: 1000px) {
   #header {
