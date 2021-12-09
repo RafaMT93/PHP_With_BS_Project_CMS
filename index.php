@@ -94,23 +94,33 @@
             </ul>
 
           </div>
-          <div class="col-md-9">
 
+
+
+          <div class="col-md-9">
+            <?php 
+              if(isset($_POST['edit_about'])):
+                printf('<div class="alert alert-success">The HTML code edited <b>successfully</b>!</div>');
+              else:
+              endif;
+            ?>
             <section id="about_team_section" class="card">
+
               <div class="card-header bg-defaultColor">About</div>
+              
               <div class="card-body">
 
-              <form method="post">
-                <div class="mb-3">
-                  <label for="aboutTeam" class="form-label">HTML Code</label>
-                  <textarea class="form-control" placeholder="Insert the content in HTML format" name="aboutTeam" id="aboutTeam"><?php printf($about) ?></textarea>
-                </div>
-                <input type="hidden" name="Edit_About" value="">
-                <button type="button" class="btn btn-md btn-defaultColor" type="submit" name="activity">Submit</button>
-              </form>
-
+                <form method="post">
+                  <div class="mb-3">
+                    <label for="aboutTeam" class="form-label">HTML Code</label>
+                    <textarea class="form-control" placeholder="Insert the content in HTML format" name="aboutTeam" id="aboutTeam"><?php printf($about) ?></textarea>
+                  </div>
+                  <input type="hidden" name="edit_about" value="">
+                  <button class="btn btn-md btn-defaultColor" type="submit" name="activity" id="activity">Submit</button>
+                </form>
 
               </div>
+
             </section>
 
             <section id="team_regist_section" class="card">
@@ -204,6 +214,7 @@
           }
 
         });
+
       });
     </script>
 
