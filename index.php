@@ -108,6 +108,22 @@
                 $about = $pdo->prepare('SELECT * FROM `db_about`');
                 $about->execute();
                 $about = $about->fetch()['ABOUT_TXT'];
+                printf('<div class="alert alert-danger">Error</div>');
+              elseif($_POST['register_member']):
+                $name = $_POST['memberName'];
+                $image = $_FILES['memberImage'];
+                $description = $_POST['memberDesciption'];
+                if($image != NULL):
+                  $final_name = time().'.jpg';
+                  if(move_uploaded_file($image['tmp_name'], $final_name)):
+                    $img_size = filesize($final_name);
+                    $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg));
+                    $sql = $pdo->prepare("INSERT INTO `db_team` VALUES (null, ?, ?, ?)");
+                    $sql->execute($name, $mysqlImg, $description);
+                    printf('<div class="alert alert-success"><b>Successfully</b> registered member!</div>');
+                    unlink($final_name);
+                  endif;
+                endif;
               endif;
             ?>
             <section id="about_team_section" class="card">
@@ -133,22 +149,23 @@
               <div class="card-header bg-defaultColor">Register Team</div>
               <div class="card-body">
 
-                <form>
+                <form method="post">
                   <div class="mb-3">
 
-                    <label for="memberName" class="form-label">Member Name</label>
+                    <label for="memberName" class="form-label">Member Name: </label>
                     <input type="text" class="form-control"name="memberName" id="memberName" />
 
                     <div class="memberImg">
-                      <label for="memberImage" class="form-label">Member Image</label>
-                      <input type=file" name="memberImage" id="memberImage" class="form-control"/>
+                      <label for="memberImage" class="form-label">Member Image: </label>
+                      <input type="file" name="memberImage" id="memberImage" class="form-control"/>
                       <input type="submit" value="Upload Image" name="submit" class="btn btn-defaultColor btn-sm">
                     </div>
                     
-                    <label for="memberDesciption" class="form-label">Member Description</label>
+                    <label for="memberDesciption" class="form-label">Member Description: </label>
                     <textarea class="form-control" name="memberDesciption" id="memberDesciption"></textarea>
 
                   </div>
+                  <input type="hidden" name="register_member">
                   <button class="btn btn-defaultColor btn-md" type="submit">Submit</button>
                 </form>
 
