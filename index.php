@@ -14,7 +14,24 @@
     <link href="./css/style.css" rel="stylesheet">
 
     <title>Admin</title>
-
+    <style type="text/css">
+      <?php 
+        $color = $pdo->prepare('SELECT * FROM `admin_config`');
+        $color->execute();
+        $color = $color->fetchAll();
+        foreach($color as $key => $val): ?>
+          :root {
+            --white: #fff;
+            --gray: #aaa;
+            --blackText: #333;
+            --dark: #212529;
+            --black: #000;
+            --defaultColor:<?php printf($val['PRIMARY_COLOR']); ?>;
+            --defaultColorHover: <?php printf($val['PRIMARY_COLOR']); ?>
+              
+            }
+        <?php endforeach; ?>
+      </style>
   </head>
   <body>
 
@@ -95,11 +112,10 @@
 
           </div>
 
-
-
           <div class="col-md-9">
-            <?php 
-              if(isset($_POST['edit_about'])):
+
+            <?php
+                if(isset($_POST['edit_about'])):
                 $about = $_POST['aboutTeam'];
                 $pdo->exec('DELETE FROM `db_about`');
                 $sql = $pdo->prepare('INSERT INTO `db_about` VALUES (null, ?)');
@@ -124,8 +140,16 @@
                     unlink($final_name);
                   endif;       
                 endif;
+              elseif(isset($_POST['register_color'])):
+                $primary_color = $_POST['primary_color'];
+                $secondary_color = $_POST['secondary_color'];
+                $pdo->exec('DELETE FROM `admin_config`');
+                $sql = $pdo->prepare("INSERT INTO `admin_config` VALUES (null, ?, ?)");
+                $sql->execute(array($primary_color, $secondary_color));
+                printf('<div class="alert alert-success"><b>Successfully</b> in change colors of UI!</div>');
               endif;
             ?>
+
             <section id="about_team_section" class="card">
 
               <div class="card-header bg-defaultColor">About</div>
@@ -217,6 +241,33 @@
                 </table>
 
               </div>
+            </section>
+
+
+            <section id="colors_selector" class="card">
+
+            <div class="card-header bg-defaultColor">Color UI Register</div>
+              
+              <div class="card-body">
+
+                <form method="post">
+
+                  <div class="mb-3 form-group">
+                    <label for="primary_color" class="form-label">Hex primary Color</label>
+                    <input type="text" class="form-control" placeholder="Insert the Hex color" name="primary_color" id="primary_color" />
+                  </div>
+
+                  <div class="mb-3 form-group">
+                    <label for="secondary_color" class="form-label">Hex secondary Color</label>
+                    <input type="text" class="form-control" placeholder="Insert the Hex color" name="secondary_color" id="secondary_color" />
+                  </div>
+
+                  <input type="hidden" name="register_color" value="">
+                  <button class="btn btn-md btn-defaultColor" type="submit">Submit</button>
+                </form>
+
+              </div>
+
             </section>
 
           </div>
