@@ -109,7 +109,7 @@
                 $about->execute();
                 $about = $about->fetch()['ABOUT_TXT'];
                 printf('<div class="alert alert-danger">Error</div>');
-              elseif($_POST['register_member']):
+              elseif(isset($_POST['register_member'])):
                 $name = $_POST['memberName'];
                 $image = $_FILES['memberImage'];
                 $description = $_POST['memberDesciption'];
@@ -117,12 +117,12 @@
                   $final_name = time().'.jpg';
                   if(move_uploaded_file($image['tmp_name'], $final_name)):
                     $img_size = filesize($final_name);
-                    $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg));
+                    $mysqlImg = addslashes(fread(fopen($final_name, "r"), $img_size));
                     $sql = $pdo->prepare("INSERT INTO `db_team` VALUES (null, ?, ?, ?)");
-                    $sql->execute($name, $mysqlImg, $description);
+                    $sql->execute(array($name, $mysqlImg, $description));
                     printf('<div class="alert alert-success"><b>Successfully</b> registered member!</div>');
                     unlink($final_name);
-                  endif;
+                  endif;       
                 endif;
               endif;
             ?>
@@ -147,26 +147,33 @@
 
             <section id="team_regist_section" class="card">
               <div class="card-header bg-defaultColor">Register Team</div>
+
               <div class="card-body">
 
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
+
                   <div class="mb-3">
 
-                    <label for="memberName" class="form-label">Member Name: </label>
-                    <input type="text" class="form-control"name="memberName" id="memberName" />
+                    <div class="form-group">
+                      <label for="memberName" class="form-label">Member Name: </label>
+                      <input type="text" class="form-control"name="memberName" id="memberName" />
+                    </div>
 
-                    <div class="memberImg">
+                    <div class="memberImg" class="form-group">
                       <label for="memberImage" class="form-label">Member Image: </label>
                       <input type="file" name="memberImage" id="memberImage" class="form-control"/>
-                      <input type="submit" value="Upload Image" name="submit" class="btn btn-defaultColor btn-sm">
                     </div>
                     
-                    <label for="memberDesciption" class="form-label">Member Description: </label>
-                    <textarea class="form-control" name="memberDesciption" id="memberDesciption"></textarea>
+                    <div class="form-group">
+                      <label for="memberDesciption" class="form-label">Member Description: </label>
+                      <textarea class="form-control" name="memberDesciption" id="memberDesciption"></textarea>
+                    </div>
 
                   </div>
-                  <input type="hidden" name="register_member">
+
+                  <input type="hidden" name="register_member" />
                   <button class="btn btn-defaultColor btn-md" type="submit">Submit</button>
+
                 </form>
 
               </div>
@@ -181,40 +188,31 @@
                     <tr>
                       <th>ID: </th>
                       <th>Member Name:</th>
-                      <th></th>
+                      <th>#</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>01</td>
-                      <td>Doe</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-sm">
-                          <i class="bi bi-trash"></i>
-                          Excluir
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>02</td>
-                      <td>Moe</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-sm">
-                          <i class="bi bi-trash"></i>
-                          Excluir
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>03</td>
-                      <td>Dooley</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-sm">
-                          <i class="bi bi-trash"></i>
-                          Excluir
-                        </button>
-                      </td>
-                    </tr>
+                    <?php
+                      $selectMembers = $pdo->prepare("SELECT * FROM `db_team`");
+                      $selectMembers->execute();
+                      $members = $selectMembers->fetchAll();
+                      foreach($members as $key => $value):
+                    ?>
+                      <tr>
+                        <td>
+                          <?php printf($value['ID_MEMBER']); ?>
+                        </td>
+                        <td>
+                          <?php printf($value['MEMBER_NAME']); ?>
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                            Excluir
+                          </button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
 
