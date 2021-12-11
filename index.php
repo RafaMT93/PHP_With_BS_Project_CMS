@@ -230,7 +230,7 @@
                           <?php printf($value['MEMBER_NAME']); ?>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-danger btn-sm">
+                          <button class="delete btn btn-danger btn-sm" id_member="<?php printf($value['ID_MEMBER']); ?>">
                             <i class="bi bi-trash"></i>
                             Excluir
                           </button>
@@ -243,10 +243,9 @@
               </div>
             </section>
 
-
             <section id="colors_selector" class="card">
 
-            <div class="card-header bg-defaultColor">Color UI Register</div>
+              <div class="card-header bg-defaultColor">Color UI Register</div>
               
               <div class="card-body">
 
@@ -292,9 +291,19 @@
           if($(window)[0].innerWidth <= 768 && $('.navbar-collapse').hasClass('show')) {
             $('.navbar-toggler').click();
           }
-
         });
-
+        $('button.delete').click(function(){
+          let id_member = $(this).attr('id_member');
+          let $el = $(this).parent().parent();
+          $.ajax({
+            method: 'POST',
+            data: {'id_member': id_member},
+            url: 'deletar.php',
+          }).done(function(){  
+            $el.fadeOut(function(){
+            $el.remove();
+          });})
+        });
       });
     </script>
 
