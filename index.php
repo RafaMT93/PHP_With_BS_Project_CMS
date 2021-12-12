@@ -130,7 +130,7 @@
                 $image = $_FILES['memberImage'];
                 $description = $_POST['memberDesciption'];
                 if($image != NULL):
-                  $final_name = time().'.jpg';
+                  $final_name = time().'.jpeg';
                   if(move_uploaded_file($image['tmp_name'], $final_name)):
                     $img_size = filesize($final_name);
                     $mysqlImg = addslashes(fread(fopen($final_name, "r"), $img_size));
